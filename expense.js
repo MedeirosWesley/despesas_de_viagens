@@ -11,11 +11,23 @@ export async function getFormData() {
     const category = document.getElementById('category').value;
     const date = formatDate(document.getElementById('date').value);
 
-    const id = generateNewId();
+    let expense = localStorage.getItem('edit') ? JSON.parse(localStorage.getItem('edit')) : null;
+
+    const id = expense ? expense.id : generateNewId();
     const rate = await fetchExchangeRate(currencyOfOrigin, currencyToConvert);
     const amount = calculateConvertedAmount(quantity, value, rate);
 
     return createExpense(id, title, value, category, date, quantity, currencyOfOrigin, currencyToConvert, amount);
+}
+
+export function setFormData(expense) {
+    document.getElementById('title').value = expense.title;
+    document.getElementById('quantity').value = parseInt(expense.quantity);
+    document.getElementById('value').value = parseFloat(expense.value);
+    document.getElementById('currencyOfOrigin').value = expense.currencyOfOrigin;
+    document.getElementById('currencyToConvert').value = expense.currencyToConvert;
+    document.getElementById('category').value = expense.category;
+    document.getElementById('date').value = formatDate(expense.date, true);
 }
 
 function generateNewId() {
@@ -32,7 +44,12 @@ function calculateConvertedAmount(quantity, amount, rate) {
     return (quantity * amount * rate).toFixed(2);
 }
 
-function formatDate(date) {
-    const [year, month, day] = date.split('-');
-    return `${day}/${month}/${year}`;
+function formatDate(date, fromStorage = false) {
+    if (fromStorage) {
+        const [day, month, year] = date.split('/');
+        return `${year}-${month}-${day}`;
+    } else {
+        const [year, month, day] = date.split('-');
+        return `${day}/${month}/${year}`;
+    }
 }

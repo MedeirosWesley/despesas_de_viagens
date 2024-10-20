@@ -16,18 +16,14 @@
     <div class="container">
         <div class="form-wrapper">
             <!-- Formulário na metade esquerda -->
-            <form id="form" class="form-left">
-                <h2>Despesas em Viagens</h1>
-                    <p>Organize suas despesas de forma simples e eficiente. Cadastre suas despesas e tenha mais controle e tranquilidade durante sua aventura.</p>
-                <div class="input_container">
-                    <label for="password_field" class="input_label">Descrição</label>
-                    <input id="title" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="Digite a descrição da despesa">
-                </div>
-        <h1>Cadastro de Despesas em Viagens</h1>
+    <form id="form" class="form-left">
+        <h2>Despesas em Viagens</h1>
+            <p>Organize suas despesas de forma simples e eficiente. Cadastre suas despesas e tenha mais controle e tranquilidade durante sua aventura.</p>
+
         <form id="form">
-            <div class="form-group">
-                <label for="title">Descrição:</label>
-                <input type="text" id="title" name="descricao" placeholder="Digite a descrição da despesa" required>
+            <div class="input_container">
+                <label for="title" class="input_label">Descrição:</label>
+                <input type="text" id="title" class="input_field" name="descricao" placeholder="Digite a descrição da despesa" required>
             </div>
 
                 <div class="input_container">
@@ -35,14 +31,9 @@
                     <input type="number" class="input_field" id="quantity" name="quantidade" min="1" placeholder="Digite a quantidade" required>
                 </div>
 
-                <div class="input_container">
-                    <label for="value" class="input_label">Valor:</label>
-                    <input type="number" class="input_field" id="value" name="valor" min="0.01" step="0.01" placeholder="Digite o valor" required>
-                </div>
-
-            <div class="form-group">
-                <label for="value">Valor:</label>
-                <input type="number" id="value" name="valor" min="0.01" step="0.01" placeholder="Digite o valor" required>
+            <div class="input_container">
+                <label for="value"  class="input_label">Valor:</label>
+                <input type="number" class="input_field" id="value" name="valor" min="0.01" step="0.01" placeholder="Digite o valor" required>
             </div>
 
                 <div class="input_container">
@@ -84,7 +75,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="purchase--btn">Cadastrar Despesa</button>
+                <button type="submit" id="submit" class="purchase--btn">Cadastrar Despesa</button>
 
                 <h1 class="mt-2">Despesas</h1>
                 <div class="container">
@@ -98,15 +89,9 @@
                 <img src="assets/travel.svg" background="transparent" speed="1" style="width: 300px; justify-content: center;"   />
             </div>
         </div>
-            <button type="submit" id="submit">Cadastrar Despesa</button>
         </form>
     </div>
-    <h1 class="mt-2">Despesas</h1>
 
-    <div class="container">
-        <div id="cards-container"></div>
-
-    </div>
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="app.js"></script>

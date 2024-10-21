@@ -1,5 +1,5 @@
 import ExpenseStorageManager from './storage.js';
-import {getFormData} from './expense.js';
+import { getFormData } from './expense.js';
 import { renderCards, showNotification } from './ui.js';
 
 if ('serviceWorker' in navigator) {
@@ -14,10 +14,19 @@ document.getElementById('form').addEventListener('submit', async function (event
     event.preventDefault();
 
     const expense = await getFormData();
-    expenseStorageManager.addExpense(expense);
+
+    if (localStorage.getItem('edit')) {
+        expenseStorageManager.editExpense(expense);
+
+        localStorage.removeItem('edit');
+        document.getElementById('submit').innerText = 'Cadastrar Despesa';
+        showNotification(`${expense.title} editado com sucesso!`);
+    } else {
+        expenseStorageManager.addExpense(expense);
+        showNotification(`${expense.title} adicionado com sucesso!`);
+    }
 
     this.reset();
-    showNotification(`${expense.title} adicionado com sucesso!`);
     renderCards();
 });
 

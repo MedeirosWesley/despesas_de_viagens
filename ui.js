@@ -1,28 +1,29 @@
+import { setFormData } from './expense.js';
 import ExpenseStorageManager from './storage.js';
 
 const expenseStorageManager = new ExpenseStorageManager('expenses');
 
 export function renderCards() {
-    const container = document.getElementById("cards-container");
-    container.innerHTML = "";
+  const container = document.getElementById("cards-container");
+  container.innerHTML = "";
 
-    const expensesList = expenseStorageManager.getExpenses();
+  const expensesList = expenseStorageManager.getExpenses();
 
-    if (expensesList.length === 0) {
-        container.innerHTML = '<p>Nenhuma despesa registrada.</p>';
-        return;
-    }
+  if (expensesList.length === 0) {
+    container.innerHTML = '<p>Nenhuma despesa registrada.</p>';
+    return;
+  }
 
-    expensesList.forEach(item => {
-        const card = createCardTemplate(item);
-        container.innerHTML += card;
-    });
+  expensesList.forEach(item => {
+    const card = createCardTemplate(item);
+    container.innerHTML += card;
+  });
 
-    addCardInteractions();
+  addCardInteractions();
 }
 
 function createCardTemplate(item) {
-    return `
+  return `
     <div class="card show" id="card-${item.id}">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <label style="font-size: larger;"><strong>${item.title}</strong></label>
@@ -38,7 +39,7 @@ function createCardTemplate(item) {
 }
 
 function createCardDetails(item) {
-    return `
+  return `
     <label><strong>Valor:</strong> ${item.value.toFixed(2).replace(".", ",")} ${item.currencyOfOrigin}</label>
     <label><strong>Categoria:</strong> ${item.category}</label>
     <label><strong>Data:</strong> ${item.date}</label>
@@ -62,7 +63,7 @@ function createCardDetails(item) {
 }
 
 function createLottieButton(action, id, src, tooltipText) {
-    return `
+  return `
     <div class="tooltip lottie-container">
       <lottie-player 
         src="${src}"
@@ -78,45 +79,55 @@ function createLottieButton(action, id, src, tooltipText) {
 }
 
 function addCardInteractions() {
-    document.querySelectorAll("lottie-player").forEach(player => {
-        player.addEventListener("click", (event) => {
-            const dataId = event.target.getAttribute("data-id");
-            const action = dataId.split('-')[0];
-            const id = dataId.split('-').slice(1).join('-');  // Junta as partes do ID se for dividido por '-'
+  document.querySelectorAll("lottie-player").forEach(player => {
+    player.addEventListener("click", (event) => {
+      const dataId = event.target.getAttribute("data-id");
+      const action = dataId.split('-')[0];
+      const id = dataId.split('-').slice(1).join('-');  // Junta as partes do ID se for dividido por '-'
 
-            if (action === 'delete') {
-                animateRemoval(id);
-            }
-        });
+      if (action === 'delete') {
+        animateRemoval(id);
+      } else if (action === 'edit') {
+        const expensesList = expenseStorageManager.getExpenses();
+        const expense = expensesList.find(expense => expense.id == id);
+
+        if (expense) {
+          localStorage.setItem('edit', JSON.stringify(expense));
+          setFormData(expense);
+          document.getElementById('submit').innerText = "Editar Despesa";
+        }
+      }
+
     });
+  });
 }
 
 function animateRemoval(id) {
-    const card = document.getElementById(`card-${id}`);
+  const card = document.getElementById(`card-${id}`);
 
-    if (confirm("Você tem certeza que deseja remover esta despesa?")) {
-        if (card) {
-            card.classList.add("hide");
-            card.ontransitionend = () => removeCard(id);
-        }
+  if (confirm("Você tem certeza que deseja remover esta despesa?")) {
+    if (card) {
+      card.classList.add("hide");
+      card.ontransitionend = () => removeCard(id);
     }
+  }
 }
 
 function removeCard(id) {
-    expenseStorageManager.removeExpense(id);
+  expenseStorageManager.removeExpense(id);
 
-    const card = document.getElementById(`card-${id}`);
-    if (card) {
-        card.remove();
-    }
+  const card = document.getElementById(`card-${id}`);
+  if (card) {
+    card.remove();
+  }
 
-    showNotification(`Despesa removida com sucesso!`);
+  showNotification(`Despesa removida com sucesso!`);
 }
 
 export function showNotification(message) {
-    const notification = document.getElementById("notification");
-    notification.textContent = message;
-    notification.classList.add("show");
+  const notification = document.getElementById("notification");
+  notification.textContent = message;
+  notification.classList.add("show");
 
-    setTimeout(() => notification.classList.remove("show"), 3000);
+  setTimeout(() => notification.classList.remove("show"), 3000);
 }

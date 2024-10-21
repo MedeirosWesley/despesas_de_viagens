@@ -1,3 +1,175 @@
+.form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-left {
+  flex: 1;
+  min-width: 300px;
+  max-width: 50%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px 0px 0px 8px;
+}
+.highlight {
+  color: #1c5c37;
+}
+.form-right {
+  flex: 1;
+  background-color: #D6FEE7;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; 
+  border-radius: 0px 8px 8px 0px;
+}
+
+.form-right img {
+  margin: 0 auto;
+}
+.titleFormRight{
+  font-size: 40px;
+}
+.subtitleFormRight{
+  font-size: 16;
+  font-weight: 500;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+  .form-wrapper {
+      flex-direction: column;
+  }
+
+  .form-left, 
+  .form-right {
+      max-width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .form-right {
+      display: none; /* Esconde a parte direita em telas menores */
+  }
+}
+
+.input_container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.input_label {
+  font-size: 14px;
+  color: #8B8E98;
+  font-weight: 500;
+}
+
+.input_field {
+  width: auto;
+  height: 40px;
+  padding: 0 0 0 16px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #F2F2F2;
+  border: 1px solid #e5e5e500;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 2px #8B8E98;
+  background-color: transparent;
+}
+
+.purchase--btn {
+  height: 55px;
+  background: #F2F2F2;
+  border-radius: 11px;
+  border: 0;
+  outline: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #363636 0%, #1B1B1B 50%, #000000 100%);
+  box-shadow: 0px 0px 0px 0px #FFFFFF, 0px 0px 0px 0px #000000;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.purchase--btn:hover {
+  box-shadow: 0px 0px 0px 2px #FFFFFF, 0px 0px 0px 4px #0000003a;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.input_container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.input_label {
+  font-size: 14px;
+  color: #8B8E98;
+  font-weight: 500;
+}
+
+.input_field {
+  width: auto;
+  height: 40px;
+  padding: 0 0 0 16px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #F2F2F2;
+  border: 1px solid #e5e5e500;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 2px #1c5c37;
+  background-color: transparent;
+}
+
+.purchase--btn {
+  height: 55px;
+  width: 100%;
+  background: #1c5c37;
+  border-radius: 11px;
+  border: 0;
+  outline: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0px 0px 0px 0px #FFFFFF, 0px 0px 0px 0px #000000;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.purchase--btn:hover {
+  box-shadow: 0px 0px 0px 2px #FFFFFF, 0px 0px 0px 4px #0000003a;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -8,15 +180,6 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 30px;
-}
-
-.container {
-  max-width: 60vw;
-  margin: 0 auto;
-  padding: 20px;
-  padding-right: 40px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .lottie-container {
@@ -71,7 +234,7 @@ h1 {
 
 .button-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .button-container a {
@@ -173,20 +336,11 @@ input,
 select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   border-radius: 4px;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
+
 
 button:hover {
   background-color: #218838;

@@ -28,8 +28,8 @@ function createCardTemplate(item) {
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <label style="font-size: larger;"><strong>${item.title}</strong></label>
         <div class="d-inline-flex align-items-top">
-          ${createLottieButton('edit', item.id, '/edit-animation.json', 'Editar item')}
-          ${createLottieButton('delete', item.id, '/delete-animation.json', 'Deletar item')}
+          ${createLottieButton('edit', item.id, '/assets/jsons/edit-animation.json', 'Editar item')}
+          ${createLottieButton('delete', item.id, '/assets/jsons/delete-animation.json', 'Deletar item')}
         </div>
       </div>
       <div class="divider"></div>

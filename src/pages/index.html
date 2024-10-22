@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Despesas em Viagens</title>
+    <link rel="manifest" href="/assets/jsons/manifest.json">
+    <link rel="stylesheet" href="/src/css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="notification" class="notification"></div>
+    <div class="container">
+        <div class="form-wrapper">
+            <!-- Formulário na metade esquerda -->
+            <form id="form" class="form-left">
+                <h2>Despesas em Viagens</h1>
+                    <p>Organize suas despesas de forma simples e eficiente. Cadastre suas despesas e tenha mais controle
+                        e tranquilidade durante sua aventura.</p>
+
+                    <form id="form">
+                        <div class="input_container">
+                            <label for="title" class="input_label">Descrição:</label>
+                            <input type="text" id="title" class="input_field" name="descricao"
+                                placeholder="Digite a descrição da despesa" required>
+                        </div>
+
+                        <div class="input_container">
+                            <label for="quantity" class="input_label">Quantidade:</label>
+                            <input type="number" class="input_field" id="quantity" name="quantidade" min="1"
+                                placeholder="Digite a quantidade" required>
+                        </div>
+
+                        <div class="input_container">
+                            <label for="value" class="input_label">Valor:</label>
+                            <input type="number" class="input_field" id="value" name="valor" min="0.01" step="0.01"
+                                placeholder="Digite o valor" required>
+                        </div>
+
+                        <div class="input_container">
+                            <label for="date" class="input_label">Data:</label>
+                            <input id="date" class="input_field" type="date" required />
+                        </div>
+
+                        <div class="input_container">
+                            <label for="currencyOfOrigin" class="input_label">Moeda de Origem:</label>
+                            <select id="currencyOfOrigin" class="input_field" name="moeda_origem" required>
+                                <option value="">Selecione a moeda de origem</option>
+                                <option value="BRL">Real (BRL)</option>
+                                <option value="USD">Dólar Americano (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">Libra Esterlina (GBP)</option>
+                            </select>
+                        </div>
+
+                        <div class="input_container">
+                            <label for="currencyToConvert" class="input_label">Moeda de Destino:</label>
+                            <select id="currencyToConvert" class="input_field" name="moeda_destino" required>
+                                <option value="">Selecione a moeda de destino</option>
+                                <option value="BRL">Real (BRL)</option>
+                                <option value="USD">Dólar Americano (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">Libra Esterlina (GBP)</option>
+                            </select>
+                        </div>
+
+                        <div class="input_container">
+                            <label for="category" class="input_label">Categoria:</label>
+                            <select id="category" class="input_field" name="moeda_destino" required>
+                                <option value="">Selecione a categoria</option>
+                                <option value="Alimentação">Alimentação</option>
+                                <option value="Transporte">Transporte</option>
+                                <option value="Hospedagem">Hospedagem</option>
+                                <option value="Lazer">Lazer</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submit" class="purchase--btn">Cadastrar Despesa</button>
+
+                        <h1 class="mt-2">Despesas</h1>
+                        <div class="container">
+                            <div id="cards-container"></div>
+                        </div>
+                    </form>
+
+                    <div class="form-right">
+                        <h1 class="titleFormRight">Porque cada <span class="highlight">viagem</span> conta</h1>
+                        <p class="subtitleFormRight">Organize suas despesas de forma simples e eficiente. Cadastre suas
+                            despesas e tenha mais controle e tranquilidade durante sua aventura.</p>
+                        <img src="/assets/svg/travel.svg" background="transparent" speed="1"
+                            style="width: 300px; justify-content: center;" />
+                    </div>
+        </div>
+        </form>
+    </div>
+
+    <script type="module" src="/src/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

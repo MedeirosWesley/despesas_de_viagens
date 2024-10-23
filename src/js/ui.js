@@ -56,7 +56,7 @@ function createCardDetails(item) {
         </div>
       </div>
       <div class="col-6 d-flex justify-content-end">
-        <strong>Total: </strong> ${item.amount}
+        <strong>Total: </strong>${item.amount}
       </div>
     </div>
   `;
@@ -64,7 +64,7 @@ function createCardDetails(item) {
 
 function createLottieButton(action, id, src, tooltipText) {
   return `
-    <div class="tooltip lottie-container">
+    <div class="lottie-container">
       <lottie-player 
         src="${src}"
         background="transparent"

@@ -84,10 +84,11 @@ function addCardInteractions() {
       const dataId = event.target.getAttribute("data-id");
       const action = dataId.split('-')[0];
       const id = dataId.split('-').slice(1).join('-');  // Junta as partes do ID se for dividido por '-'
-
       if (action === 'delete') {
         animateRemoval(id);
       } else if (action === 'edit') {
+        window.location.href='index.html'
+        
         const expensesList = expenseStorageManager.getExpenses();
         const expense = expensesList.find(expense => expense.id == id);
 

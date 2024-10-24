@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de despesas cadastradas</title>
+    <link rel="manifest" href="/assets/jsons/manifest.json">
+    <link rel="stylesheet" href="/src/css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="notification" class="notification"></div>
+    <div class="container">
+        <div class="expenses-list-wrapper">
+            <div id="form" class="expenses-center">
+                <h2>Despesas cadastradas</h1>
+
+                <button onclick="window.location.href='index.html'" class="purchase--btn">Cadastrar Despesas</button>
+
+                <div class="container">
+                    <div id="cards-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

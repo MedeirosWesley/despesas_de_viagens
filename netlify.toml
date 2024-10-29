@@ -1,0 +1,44 @@
+[build]
+  publish = "src/pages" # Define o diretório de publicação onde estão os HTMLs
+
+# Redireciona a rota raiz para index.html
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+# Rotas para páginas HTML específicas
+[[redirects]]
+  from = "/new-budget"
+  to = "/new-budget.html"
+  status = 200
+
+[[redirects]]
+  from = "/new-expense"
+  to = "/new-expense.html"
+  status = 200
+
+# Configuração para servir o CSS, JavaScript e Assets corretamente
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Permitir acesso a arquivos fora do diretório de publicação
+    Link = "</src/css/style.css>; rel=stylesheet, </src/js/app.js>; rel=script"
+
+[[redirects]]
+  from = "/css/*"
+  to = "/../css/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/js/*"
+  to = "/../js/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/asserts/*"
+  to = "/../asserts/:splat"
+  status = 200
+  force = true

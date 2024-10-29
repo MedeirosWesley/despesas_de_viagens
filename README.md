@@ -42,7 +42,7 @@ Para instalar o PWA, o ícone de instalação aparecerá automaticamente na barr
 
 Este projeto está hospedado no Netlify, uma plataforma de hospedagem estática com suporte a CI/CD. Para visualizar o projeto publicado, acesse o seguinte link:
 
-> TODO: AJUSTAR APÓS A PUBLICAÇÃO [Exemplo do App Publicado](https://main--serene-salmiakki-4d8c53.netlify.app/)
+### [Exemplo do App Publicado](https://stirring-medovik-97d6ad.netlify.app/index.html)
 
 ## Como Executar o Projeto Localmente
 Siga os passos abaixo para configurar e executar o projeto localmente em sua máquina:
